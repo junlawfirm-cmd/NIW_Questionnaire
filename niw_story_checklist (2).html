@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="ko" data-lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>NIW Story Questionnaire – Story + Checklist (KR/EN/中文)</title>
+  <style>
+    :root {
+      --cobalt-blue: #0047ab;
+      --cobalt-blue-soft: #e8f0ff;
+      --gold: #d4af37;
+      --gold-soft: #fff7dd;
+      --text-main: #1f2933;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      margin: 40px auto;
+      max-width: 960px;
+      line-height: 1.6;
+      color: var(--text-main);
+      background: #f7f9fc;
+    }
+
+    h1, h2, h3 {
+      margin: 0 0 10px 0;
+    }
+
+    .header-box {
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin-bottom: 30px;
+      background: linear-gradient(135deg, var(--cobalt-blue), #001f4f);
+      color: #ffffff;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+    }
+
+    .header-box h1 {
+      font-size: 24px;
+      letter-spacing: 0.03em;
+    }
+
+    .header-sub {
+      margin-top: 6px;
+      font-size: 14px;
+      color: #f5f5f5;
+    }
+
+    .header-contact {
+      margin-top: 10px;
+      font-size: 13px;
+    }
+
+    .header-contact span {
+      display: inline-block;
+      margin-right: 16px;
+    }
+
+    .motto-label {
+      font-weight: 600;
+      color: var(--gold);
+    }
+
+    .lang-toggle {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .lang-toggle-label {
+      font-size: 12px;
+      opacity: 0.9;
+    }
+
+    .lang-btn {
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      border: 1px solid rgba(255,255,255,0.7);
+      background: rgba(0,0,0,0.12);
+      color: #ffffff;
+      cursor: pointer;
+    }
+
+    .lang-btn.active {
+      background: #ffffff;
+      color: #001f4f;
+      border-color: #ffffff;
+    }
+
+    .form-wrapper {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 24px 26px 30px;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    .form-title {
+      border-left: 5px solid var(--gold);
+      padding-left: 10px;
+      margin-bottom: 12px;
+    }
+
+    .form-note {
+      font-size: 13px;
+      background: var(--gold-soft);
+      border-radius: 8px;
+      padding: 10px 12px;
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      margin-bottom: 16px;
+    }
+
+    fieldset {
+      border: 1px solid rgba(0, 71, 171, 0.25);
+      padding: 18px 18px 16px;
+      margin-bottom: 22px;
+      border-radius: 10px;
+      background: #ffffff;
+    }
+
+    legend {
+      font-weight: 700;
+      padding: 0 8px;
+      color: var(--cobalt-blue);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 16px;
+      font-size: 14px;
+    }
+
+    .q-number {
+      font-weight: 700;
+      color: var(--cobalt-blue);
+      margin-right: 6px;
+    }
+
+    .q-text {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .q-hint {
+      display: block;
+      font-size: 12px;
+      color: #6b7280;
+      margin-bottom: 4px;
+    }
+
+    .small-input {
+      max-width: 320px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      max-width: 100%;
+      padding: 9px 10px;
+      border: 1px solid #cbd2e1;
+      border-radius: 6px;
+      font-size: 14px;
+      resize: none;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--cobalt-blue);
+      box-shadow: 0 0 0 2px rgba(0, 71, 171, 0.18);
+    }
+
+    textarea {
+      min-height: 80px;
+      line-height: 1.5;
+    }
+
+    .inline-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+      align-items: center;
+      font-size: 13px;
+    }
+
+    .inline-group label {
+      margin-bottom: 4px;
+    }
+
+    .checklist-block {
+      margin: -6px 0 12px 0;
+      font-size: 13px;
+      padding-left: 4px;
+    }
+
+    .checklist-block strong {
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .checklist-block label {
+      margin-bottom: 2px;
+      font-size: 13px;
+    }
+
+    .submit-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+      align-items: center;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 10px 22px;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--cobalt-blue);
+      color: #ffffff;
+      box-shadow: 0 8px 16px rgba(0, 71, 171, 0.35);
+    }
+
+    .btn-primary:hover {
+      background: #003580;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--cobalt-blue);
+      border: 1px solid rgba(0, 71, 171, 0.4);
+    }
+
+    .btn-ghost:hover {
+      background: var(--cobalt-blue-soft);
+    }
+
+    .submit-btn {
+      background: linear-gradient(135deg, var(--gold), #facc15);
+      color: #111827;
+      padding: 11px 26px;
+      border-radius: 999px;
+      border: none;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+    }
+
+    .submit-btn:hover {
+      filter: brightness(0.97);
+    }
+
+    .preview-box {
+      margin-top: 14px;
+      padding: 10px 12px;
+      background: #f9fafb;
+      border: 1px dashed #d1d5db;
+      border-radius: 8px;
+    }
+
+    .preview-box textarea {
+      width: 100%;
+      min-height: 180px;
+      font-family: "Menlo", "Consolas", monospace;
+      font-size: 12px;
+    }
+
+    .hint-submission {
+      font-size: 12px;
+      color: #4b5563;
+      margin-top: 10px;
+    }
+
+    .lang-ko, .lang-en, .lang-zh {
+      display: none;
+    }
+
+    html[data-lang="ko"] .lang-ko {
+      display: inline;
+    }
+
+    html[data-lang="en"] .lang-en {
+      display: inline;
+    }
+
+    html[data-lang="zh"] .lang-zh {
+      display: inline;
+    }
+
+    @media (max-width: 640px) {
+      body {
+        margin: 20px;
+      }
+      .form-wrapper {
+        padding: 18px 16px 22px;
+      }
+      .header-box {
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="header-box">
+  <h1>
+    <span class="lang-ko">Law Office of Hong-min Jun</span>
+    <span class="lang-en">Law Office of Hong-min Jun</span>
+    <span class="lang-zh">Law Office of Hong-min Jun</span>
+  </h1>
+  <div class="header-sub">
+    <span class="motto-label">
+      <span class="lang-ko">Motto:</span>
+      <span class="lang-en">Motto:</span>
+      <span class="lang-zh">Motto:</span>
+    </span>
+    <span>
+      <span class="lang-ko">Attorneys for Foreign-Born Individuals and Small Business Owners!</span>
+      <span class="lang-en">Attorneys for Foreign-Born Individuals and Small Business Owners!</span>
+      <span class="lang-zh">Attorneys for Foreign-Born Individuals and Small Business Owners!</span>
+    </span>
+  </div>
+  <div class="header-contact">
+    <span>
+      <strong>
+        <span class="lang-ko">Location:</span>
+        <span class="lang-en">Location:</span>
+        <span class="lang-zh">Location:</span>
+      </strong>
+      <span>Fishers, Indiana (Hamilton County)</span>
+    </span><br>
+    <span>
+      <strong>Email:</strong> askus@junlawfirm.com
+    </span><br>
+    <span>
+      <strong>
+        <span class="lang-ko">Phone:</span>
+        <span class="lang-en">Phone:</span>
+        <span class="lang-zh">Phone:</span>
+      </strong>
+      847-660-4233 &nbsp;|&nbsp; 317-701-2768
+    </span>
+  </div>
+
+  <div class="lang-toggle">
+    <span class="lang-toggle-label">
+      <span class="lang-ko">언어 선택:</span>
+      <span class="lang-en">Language:</span>
+      <span class="lang-zh">语言:</span>
+    </span>
+    <button type="button" class="lang-btn active" data-lang-btn="ko">한국어</button>
+    <button type="button" class="lang-btn" data-lang-btn="en">English</button>
+    <button type="button" class="lang-btn" data-lang-btn="zh">中文</button>
+  </div>
+</div>
+
+<div class="form-wrapper">
+  <div class="form-title">
+    <h2>
+      <span class="lang-ko">NIW 스토리 질문지 – 체크리스트 + 서술형</span>
+      <span class="lang-en">NIW Story Questionnaire – Checklist + Narrative</span>
+      <span class="lang-zh">NIW 故事问卷 – 清单 + 叙述</span>
+    </h2>
+  </div>
+
+  <div class="form-note">
+    <span class="lang-ko">
+      이 질문지는 변호사가 지원자님의 <b>핵심 업적, 영향력, 자격, 그리고 미국 내 향후 계획</b>을 파악하기 위한 자료입니다.<br>
+      영어/한국어/중국어 중 편한 언어로 작성하셔도 됩니다.
+    </span>
+    <span class="lang-en">
+      This questionnaire helps us understand your <b>key achievements, impact, qualifications, and future plans in the U.S.</b><br>
+      You may respond in English, Korean, or Chinese.
+    </span>
+    <span class="lang-zh">
+      本问卷用于了解您的<b>核心成就、影响力、资格以及在美国的未来计划</b>。<br>
+      您可以使用英文、韩文或中文回答。
+    </span>
+  </div>
+
+  <form id="niwStoryForm"
+        action="mailto:askus@junlawfirm.com"
+        method="POST"
+        enctype="text/plain">
+
+    <!-- 기본 정보 -->
+    <fieldset>
+      <legend>
+        <span class="lang-ko">기본 정보</span>
+        <span class="lang-en">Basic Information</span>
+        <span class="lang-zh">基本信息</span>
+      </legend>
+
+      <label>
+        <span class="q-text">
+          <span class="lang-ko">성함 (Full Name)</span>
+          <span class="lang-en">Full Name</span>
+          <span class="lang-zh">姓名 (Full Name)</span>
+        </span>
+        <input type="text" name="Full Name" class="small-input" placeholder="e.g., Hong-min Jun">
+      </label>
+
+      <label>
+        <span class="q-text">
+          <span class="lang-ko">전공 및 현재/최근 직함</span>
+          <span class="lang-en">Major & Current/Recent Position</span>
+          <span class="lang-zh">专业及当前/最近职务</span>
+        </span>
+        <input type="text" name="Major and Position"
+               placeholder="e.g., Ph.D. in Electrical Engineering, Senior Research Engineer at ABC Corp.">
+      </label>
+
+      <label>
+        <span class="q-text">
+          <span class="lang-ko">주요 직군 / 트랙 선택</span>
+          <span class="lang-en">Primary Professional Track</span>
+          <span class="lang-zh">主要职业方向</span>
+        </span>
+        <span class="q-hint">
+          <span class="lang-ko">가장 가까운 한 가지를 선택해 주세요. (추가 설명은 아래에 적으셔도 됩니다.)</span>
+          <span class="lang-en">Please choose the closest option (you may explain further below).</span>
+          <span class="lang-zh">请选择最接近的一项（可在下方补充说明）。</span>
+        </span>
+        <div class="inline-group">
+          <label><input type="radio" name="Primary Track" value="Engineer / R&D Engineer"> <span class="lang-ko">엔지니어 / 연구개발</span><span class="lang-en">Engineer / R&D</span><span class="lang-zh">工程师 / 研发</span></label>
+          <label><input type="radio" name="Primary Track" value="Researcher / Professor"> <span class="lang-ko">연구자 / 교수</span><span class="lang-en">Researcher / Professor</span><span class="lang-zh">研究人员 / 教授</span></label>
+          <label><input type="radio" name="Primary Track" value="Data / AI / Software"> <span class="lang-ko">데이터 / AI / 소프트웨어</span><span class="lang-en">Data / AI / Software</span><span class="lang-zh">数据 / AI / 软件</span></label>
+          <label><input type="radio" name="Primary Track" value="Manufacturing / Quality / Process"> <span class="lang-ko">제조 / 품질 / 공정</span><span class="lang-en">Manufacturing / Quality / Process</span><span class="lang-zh">制造 / 质量 / 工艺</span></label>
+          <label><input type="radio" name="Primary Track" value="Business / Management / Strategy"> <span class="lang-ko">비즈니스 / 경영 / 전략</span><span class="lang-en">Business / Management / Strategy</span><span class="lang-zh">商务 / 管理 / 战略</span></label>
+          <label><input type="radio" name="Primary Track" value="Medical / Healthcare"> <span class="lang-ko">의료 / 헬스케어</span><span class="lang-en">Medical / Healthcare</span><span class="lang-zh">医疗 / 健康</span></label>
+          <label><input type="radio" name="Primary Track" value="Arts / Culture / Design"> <span class="lang-ko">예술 / 문화 / 디자인</span><span class="lang-en">Arts / Culture / Design</span><span class="lang-zh">艺术 / 文化 / 设计</span></label>
+          <label><input type="radio" name="Primary Track" value="Law / Policy / Social Science"> <span class="lang-ko">법 / 정책 / 사회과학</span><span class="lang-en">Law / Policy / Social Science</span><span class="lang-zh">法律 / 政策 / 社会科学</span></label>
+          <label><input type="radio" name="Primary Track" value="Other"> <span class="lang-ko">기타</span><span class="lang-en">Other</span><span class="lang-zh">其他</span></label>
+        </div>
+      </label>
+
+      <label>
+        <span class="q-text">
+          <span class="lang-ko">기타 설명 (선택)</span>
+          <span class="lang-en">Additional Description (optional)</span>
+          <span class="lang-zh">补充说明（可选）</span>
+        </span>
+        <textarea name="Primary Track - Additional Description"></textarea>
+      </label>
+    </fieldset>
+
+    <!-- NIW 준비도 체크리스트 -->
+    <fieldset>
+      <legend>
+        <span class="lang-ko">NIW 준비도 체크리스트</span>
+        <span class="lang-en">NIW Readiness Checklist</span>
+        <span class="lang-zh">NIW 准备度清单</span>
+      </legend>
+
+      <div class="checklist-block">
+        <strong>
+          <span class="lang-ko">1. 학력 및 경력</span>
+          <span class="lang-en">1. Education & Career</span>
+          <span class="lang-zh">1. 学历与经历</span>
+        </strong>
+        <label><input type="checkbox" name="Checklist - Education Career" value="Master or higher degree">
+          <span class="lang-ko">석사 이상 학위를 보유하고 있습니다.</span>
+          <span class="lang-en">I have a master’s degree or higher.</span>
+          <span class="lang-zh">我拥有硕士及以上学位。</span>
+        </label>
+        <label><input type="checkbox" name="Checklist - Education Career" value="US degree">
+          <span class="lang-ko">미국에서 취득한 학위가 있습니다.</span>
+          <span class="lang-en">I hold a degree from a U.S. institution.</span>
+          <span class="lang-zh">我拥有在美国取得的学位。</span>
+        </label>
+        <label><input type="checkbox" name="Checklist - Education Career" value="5+ years of experience">
+          <span class="lang-ko">전문 분야 경력이 5년 이상입니다.</span>
+          <span class="lang-en">I have 5+ years of experience in my field.</span>
+          <span class="lang-zh">我在本专业有 5 年以上经验。</span>
+        </label>
+        <label><input type="checkbox" name="Checklist - Education Career" value="Leadership or key role experience">
+          <span class="lang-ko">팀 리더, 프로젝트 책임자, 또는 핵심 역할을 수행한 경험이 있습니다.</span>
+          <span class="lang-en">I have experience as a team lead, project owner, or key expert.</span>
+          <span class="lang-zh">我曾担任团队负责人、项目负责人或核心专家。</span>
+        </label>
+      </div>
+
+      <div class="checklist-block">
+        <strong>
+          <span class="lang-ko">2. 업적 및 성과</span>
+          <span class="lang-en">2. Achievements & Results</span>
+          <span class="lang-zh">2. 成就与成果</span>
+        </strong>
+        <label><input type="checkbox" name="Checklist - Achievement" value="Quantitative improvements">
+          <span class="lang-ko">매출, 비용, 효율, 품질 등에서 <b>정량적인 성과</b>가 있습니다.</span>
+          <span class="lang-en">I have <b>quantifiable results</b> (revenue, cost, efficiency, quality, etc.).</span>
+          <span class="lang-zh">我有<b>可量化</b>成果（营收、成本、效率、质量等）。</span>
+        </label>
+        <label><input type="checkbox" name="Checklist - Achievement" value="Developed or improved process/technology">
+          <span class="lang-ko">새로운 공정/알고리즘/시스템/제품을 개발하거나, 기존 것을 개선했습니다.</span>
+          <span class="lang-en">I developed or significantly improved processes, algorithms, systems, or products.</span>
+          <span class="lang-zh">我开发或显著改进过工艺、算法、系统或产品。</span>
+        </label>
+        <label><input type="checkbox" name="Checklist - Achievement" value="Organization-wide impact">
+          <span class="lang-ko">제 작업이 회사 또는 조직 전체에 영향을 미친 적이 있습니다.</span>
+          <span class="lang-en">My work has had organization-level impact.</span>
+          <span class="lang-zh">我的工作对整个组织产生过影响。</span>
+        </label>
+      </div>
+
+      <div class="checklist-block">
+        <strong>
+          <span class="lang-ko">3. 외부 영향력 및 평가</span>
+          <span class="lang-en">3. External Impact & Recognition</span>
+          <span class="lang-zh">3. 外部影响与评价</span>
+        </strong>
+        <label><input type="checkbox" name="Checklist - External" value="Awards or formal recognition">
+          <span class="lang-ko">사내/사외에서 상이나 공식적인 인정을 받은 적이 있습니다.</span>
+          <span class="lang-en">I have received awards or formal recognition (inside or outside my organization).</span>
+          <span class="lang-zh">我曾在公司内外获得过奖项或正式表彰。</span>
+        </label>
+        <label><input type="checkbox" name="Checklist - External" value="Talks, training, or invited lectures">
+          <span class="lang-ko">세미나 발표, 강의, 사내 교육 등을 맡아본 적이 있습니다.</span>
+          <span class="lang-en">I have given talks, trainings, or invited lectures.</span>
+          <span class="lang-zh">我曾做过演讲、培训或受邀报告。</span>
+        </label>
+        <label><input type="checkbox" name="Checklist - External" value="Publications or patents">
+          <span class="lang-ko">논문, 특허, 기술 보고서, 표준 문서 등과 관련된 업적이 있습니다.</span>
+          <span class="lang-en">I have publications, patents, technical reports, or standard documents.</span>
+          <span class="lang-zh">我有论文、专利、技术报告或标准文档等成果。</span>
+        </label>
+      </div>
+
+      <div class="checklist-block">
+        <strong>
+          <span class="lang-ko">4. 미국 내 향후 계획</span>
+          <span class="lang-en">4. Future Plans in the U.S.</span>
+          <span class="lang-zh">4. 在美国的未来计划</span>
+        </strong>
+        <label><input type="checkbox" name="Checklist - Future Plan" value="Contact with US companies or institutions">
+          <span class="lang-ko">미국 내 회사, 연구소, 대학 등과 이미 연락하거나 논의 중인 곳이 있습니다.</span>
+          <span class="lang-en">I am already in contact or discussion with U.S. companies, labs, or universities.</span>
+          <span class="lang-zh">我已与美国的公司、研究所或大学有联系或讨论。</span>
+        </label>
+        <label><input type="checkbox" name="Checklist - Future Plan" value="Written plans or proposals">
+          <span class="lang-ko">연구/사업/협업 계획서, 제안서 등을 작성한 적이 있습니다.</span>
+          <span class="lang-en">I have written research/business/collaboration plans or proposals.</span>
+          <span class="lang-zh">我写过研究、商业或合作计划/建议书。</span>
+        </label>
+        <label><input type="checkbox" name="Checklist - Future Plan" value="Clear role in US">
+          <span class="lang-ko">미국에서 수행하고 싶은 역할과 구체적인 활동 계획이 어느 정도 정리되어 있습니다.</span>
+          <span class="lang-en">I have a relatively clear role and activity plan for my work in the U.S.</span>
+          <span class="lang-zh">我对自己在美国的角色和活动计划已有较清晰的构想。</span>
+        </label>
+      </div>
+    </fieldset>
+
+    <!-- 서술형 질문 1~6 (업적, 영향력) -->
+    <fieldset>
+      <legend>
+        <span class="lang-ko">업적 및 영향력 – 서술형 질문</span>
+        <span class="lang-en">Achievements & Impact – Narrative Questions</span>
+        <span class="lang-zh">成就与影响 – 叙述问题</span>
+      </legend>
+
+      <label>
+        <span class="q-number">1)</span>
+        <span class="q-text">
+          <span class="lang-ko">현재 또는 과거의 일 중에서, 본인이 가장 자랑스럽게 생각하는 업적 또는 가장 어려웠던 일은 무엇인가요?</span>
+          <span class="lang-en">Among your past or current work, what is the most proud achievement or the most difficult project?</span>
+          <span class="lang-zh">在您过去或目前的工作中，最令您自豪的成就或最困难的项目是什么？</span>
+        </span>
+        <span class="q-hint">
+          <span class="lang-ko">1~2개의 대표 사례를 선택하여, 프로젝트/연구/업무의 제목이나 주제를 함께 적어 주세요.</span>
+          <span class="lang-en">Choose 1–2 representative cases and include the project/research/work title or topic.</span>
+          <span class="lang-zh">请选择 1–2 个代表性案例，并写明项目/研究/工作的标题或主题。</span>
+        </span>
+        <textarea name="Q1 - Most Proud or Difficult Achievement"></textarea>
+      </label>
+
+      <label>
+        <span class="q-number">2)</span>
+        <span class="q-text">
+          <span class="lang-ko">위 업적(또는 어려웠던 일)을 가장 자랑스럽게 생각하는 이유는 무엇인가요?</span>
+          <span class="lang-en">Why do you consider this achievement (or challenge) the most significant?</span>
+          <span class="lang-zh">您为什么认为这个成就（或挑战）对您来说最重要？</span>
+        </span>
+        <span class="q-hint">
+          <span class="lang-ko">개인적 의미, 난이도, 영향력, 조직/산업에 미친 효과 등 자유롭게 적어 주세요.</span>
+          <span class="lang-en">You may describe personal meaning, difficulty, impact, or effect on your organization/industry.</span>
+          <span class="lang-zh">可以从个人意义、难度、影响力、对组织/行业的作用等方面自由说明。</span>
+        </span>
+        <textarea name="Q2 - Reason for Being Proud"></textarea>
+      </label>
+
+      <label>
+        <span class="q-number">3)</span>
+        <span class="q-text">
+          <span class="lang-ko">그런 자랑스러운 결과를 얻기 위해, 또는 그 어려움을 극복하기 위해, 어떤 노력과 역할을 하셨는지 자세히 설명해 주세요.</span>
+          <span class="lang-en">To achieve this result or overcome the difficulty, what efforts did you make and what role did you play?</span>
+          <span class="lang-zh">为了取得该结果或克服该困难，您做了哪些努力，承担了什么角色？</span>
+        </span>
+        <span class="q-hint">
+          <span class="lang-ko">본인의 구체적 역할, 사용한 기술/방법, 문제 해결 과정, 팀 내에서의 위치(리더/핵심 담당자 등)를 중심으로 작성해 주세요.</span>
+          <span class="lang-en">Focus on your concrete role, methods/technologies used, problem-solving process, and your position in the team.</span>
+          <span class="lang-zh">重点说明您的具体角色、使用的方法/技术、解决问题的过程以及您在团队中的位置。</span>
+        </span>
+        <textarea name="Q3 - Efforts and Role"></textarea>
+      </label>
+
+      <label>
+        <span class="q-number">4)</span>
+        <span class="q-text">
+          <span class="lang-ko">그 결과로 어떤 성취를 얻었나요?</span>
+          <span class="lang-en">What results or achievements came out of this work?</span>
+          <span class="lang-zh">通过这项工作，最终取得了哪些成果？</span>
+        </span>
+        <span class="q-hint">
+          <span class="lang-ko">가능하다면 숫자(%, 금액, 수량, 기간 단축 등)를 포함해서 <b>정량적으로</b> 작성해 주세요.</span>
+          <span class="lang-en">If possible, please describe the results <b>quantitatively</b> (%, dollar amount, quantity, time saved, etc.).</span>
+          <span class="lang-zh">如有可能，请尽量<b>量化</b>说明（百分比、金额、数量、节省时间等）。</span>
+        </span>
+        <textarea name="Q4 - Result and Outcome"></textarea>
+      </label>
+
+      <div class="checklist-block">
+        <strong>
+          <span class="lang-ko">해당되는 성과 유형에 체크해 주세요 (복수 선택 가능)</span>
+          <span class="lang-en">Check all result types that apply (multiple allowed)</span>
+          <span class="lang-zh">请选择适用的成果类型（可多选）</span>
+        </strong>
+        <label><input type="checkbox" name="Q4 - Type of Result" value="Revenue or profit increase">
+          <span class="lang-ko">매출/수익 증가</span>
+          <span class="lang-en">Increase in revenue or profit</span>
+          <span class="lang-zh">营收/利润增加</span>
+        </label>
+        <label><input type="checkbox" name="Q4 - Type of Result" value="Cost reduction">
+          <span class="lang-ko">비용 절감</span>
+          <span class="lang-en">Cost reduction</span>
+          <span class="lang-zh">成本降低</span>
+        </label>
+        <label><input type="checkbox" name="Q4 - Type of Result" value="Productivity or efficiency improvement">
+          <span class="lang-ko">생산성/효율 향상</span>
+          <span class="lang-en">Productivity / efficiency improvement</span>
+          <span class="lang-zh">生产率/效率提升</span>
+        </label>
+        <label><input type="checkbox" name="Q4 - Type of Result" value="Quality or yield improvement">
+          <span class="lang-ko">품질/수율 개선</span>
+          <span class="lang-en">Quality / yield improvement</span>
+          <span class="lang-zh">质量/良率提升</span>
+        </label>
+        <label><input type="checkbox" name="Q4 - Type of Result" value="Risk or safety improvement">
+          <span class="lang-ko">안전/리스크 관리 향상</span>
+          <span class="lang-en">Risk mitigation / safety improvement</span>
+          <span class="lang-zh">风险控制/安全性提高</span>
+        </label>
+        <label><input type="checkbox" name="Q4 - Type of Result" value="Other">
+          <span class="lang-ko">기타</span>
+          <span class="lang-en">Other</span>
+          <span class="lang-zh">其他</span>:
+          <input type="text" name="Q4 - Type of Result - Other" style="width:60%; max-width:260px;">
+        </label>
+      </div>
+
+      <label>
+        <span class="q-number">5)</span>
+        <span class="q-text">
+          <span class="lang-ko">위와 같은 결과에 대해, 외부 전문가·고객 또는 직장 내 상사/동료들은 어떻게 평가했나요?</span>
+          <span class="lang-en">How did external experts, clients, or your supervisors/colleagues evaluate these results?</span>
+          <span class="lang-zh">外部专家、客户或您的上司/同事如何评价这些成果？</span>
+        </span>
+        <span class="q-hint">
+          <span class="lang-ko">평가나 피드백, 인사고과, 추천서 내용, 상·표창, 내부 보고서 등 구체적인 표현을 가능한 한 그대로 적어 주세요.</span>
+          <span class="lang-en">Please write concrete quotations or summaries from evaluations, feedback, performance reviews, recommendation letters, awards, internal reports, etc.</span>
+          <span class="lang-zh">请尽量使用具体的原话或摘要，来自评价、反馈、绩效考核、推荐信、奖励、内部报告等。</span>
+        </span>
+        <textarea name="Q5 - External Evaluation"></textarea>
+      </label>
+
+      <div class="checklist-block">
+        <strong>
+          <span class="lang-ko">해당되는 평가/인정 유형에 체크해 주세요</span>
+          <span class="lang-en">Check all types of recognition that apply</span>
+          <span class="lang-zh">请选择适用的评价/认可类型</span>
+        </strong>
+        <label><input type="checkbox" name="Q5 - Type of Recognition" value="Formal performance review or promotion">
+          <span class="lang-ko">공식 인사고과, 승진, 평가서</span>
+          <span class="lang-en">Formal performance review / promotion</span>
+          <span class="lang-zh">正式绩效考核/晋升</span>
+        </label>
+        <label><input type="checkbox" name="Q5 - Type of Recognition" value="Internal award or company-wide recognition">
+          <span class="lang-ko">사내 포상, 회사 차원의 공식 인정</span>
+          <span class="lang-en">Internal awards or company-wide recognition</span>
+          <span class="lang-zh">公司内部奖项或全公司认可</span>
+        </label>
+        <label><input type="checkbox" name="Q5 - Type of Recognition" value="Client or partner feedback">
+          <span class="lang-ko">고객/협력사로부터의 긍정적 피드백</span>
+          <span class="lang-en">Positive feedback from clients / partners</span>
+          <span class="lang-zh">来自客户/合作伙伴的正面反馈</span>
+        </label>
+        <label><input type="checkbox" name="Q5 - Type of Recognition" value="External expert or professor praise">
+          <span class="lang-ko">외부 전문가·교수로부터의 평가 또는 추천</span>
+          <span class="lang-en">Praise or recommendation from external experts / professors</span>
+          <span class="lang-zh">外部专家/教授的评价或推荐</span>
+        </label>
+        <label><input type="checkbox" name="Q5 - Type of Recognition" value="Media or public mention">
+          <span class="lang-ko">언론·보도·공개 자료에서의 언급</span>
+          <span class="lang-en">Mention in media, press, or public materials</span>
+          <span class="lang-zh">媒体报道或公开资料中的提及</span>
+        </label>
+        <label><input type="checkbox" name="Q5 - Type of Recognition" value="Other">
+          <span class="lang-ko">기타</span>
+          <span class="lang-en">Other</span>
+          <span class="lang-zh">其他</span>:
+          <input type="text" name="Q5 - Type of Recognition - Other" style="width:60%; max-width:260px;">
+        </label>
+      </div>
+
+      <label>
+        <span class="q-number">6)</span>
+        <span class="q-text">
+          <span class="lang-ko">당신의 그 업적이 산업계나 학계에 어떤 영향을 끼쳤다고 생각하시나요?</span>
+          <span class="lang-en">How do you think your achievements have influenced your industry or academic field?</span>
+          <span class="lang-zh">您认为这些成就对所属行业或学术领域产生了怎样的影响？</span>
+        </span>
+        <span class="q-hint">
+          <span class="lang-ko">회사 내 다른 부서·프로젝트 적용, 고객사 적용, 산업 표준화, 논문·특허·강의·교육, 후속 연구·제품 개발 등과의 연결이 있다면 적어 주세요.</span>
+          <span class="lang-en">Describe how your work has been applied or referenced (other departments, clients, industry standards, papers, patents, lectures, trainings, follow-up research/product development, etc.).</span>
+          <span class="lang-zh">请说明您的工作在何种程度上被应用或参考（其他部门、客户、行业标准、论文、专利、讲座、培训、后续研究/产品开发等）。</span>
+        </span>
+        <textarea name="Q6 - Impact on Industry or Academia"></textarea>
+      </label>
+
+      <div class="checklist-block">
+        <strong>
+          <span class="lang-ko">해당되는 영향 유형에 체크해 주세요</span>
+          <span class="lang-en">Check all types of impact that apply</span>
+          <span class="lang-zh">请选择适用的影响类型</span>
+        </strong>
+        <label><input type="checkbox" name="Q6 - Type of Impact" value="Adopted by other teams or departments">
+          <span class="lang-ko">회사 내 다른 팀/부서에서 해당 기술·방법을 채택</span>
+          <span class="lang-en">Adopted by other teams/departments in the company</span>
+          <span class="lang-zh">被公司其他团队/部门采用</span>
+        </label>
+        <label><input type="checkbox" name="Q6 - Type of Impact" value="Used by clients or partners">
+          <span class="lang-ko">고객사·협력사에서 해당 결과를 활용</span>
+          <span class="lang-en">Used by clients or partners</span>
+          <span class="lang-zh">被客户或合作伙伴使用</span>
+        </label>
+        <label><input type="checkbox" name="Q6 - Type of Impact" value="Became internal or external standard">
+          <span class="lang-ko">사내 표준/매뉴얼/지침 또는 외부 표준화에 기여</span>
+          <span class="lang-en">Contributed to internal manuals/standards or external standardization</span>
+          <span class="lang-zh">对公司内部手册/标准或外部标准化有贡献</span>
+        </label>
+        <label><input type="checkbox" name="Q6 - Type of Impact" value="Triggered follow-up research or projects">
+          <span class="lang-ko">후속 연구, 추가 프로젝트, 신제품 개발로 이어짐</span>
+          <span class="lang-en">Triggered follow-up research, projects, or product development</span>
+          <span class="lang-zh">引发后续研究、项目或新产品开发</span>
+        </label>
+        <label><input type="checkbox" name="Q6 - Type of Impact" value="Education, training, or curriculum">
+          <span class="lang-ko">교육·강의·커리큘럼에 반영 또는 활용</span>
+          <span class="lang-en">Incorporated into education, trainings, or curricula</span>
+          <span class="lang-zh">被用于教育、培训或课程中</span>
+        </label>
+        <label><input type="checkbox" name="Q6 - Type of Impact" value="Other">
+          <span class="lang-ko">기타</span>
+          <span class="lang-en">Other</span>
+          <span class="lang-zh">其他</span>:
+          <input type="text" name="Q6 - Type of Impact - Other" style="width:60%; max-width:260px;">
+        </label>
+      </div>
+    </fieldset>
+
+    <!-- 서술형 질문 7~9 (미래 계획) -->
+    <fieldset>
+      <legend>
+        <span class="lang-ko">향후 미국에서의 계획</span>
+        <span class="lang-en">Future Plans in the United States</span>
+        <span class="lang-zh">在美国的未来计划</span>
+      </legend>
+
+      <label>
+        <span class="q-number">7)</span>
+        <span class="q-text">
+          <span class="lang-ko">향후 미국에서 어떤 일을 하고 싶은지, 구체적으로 설명해 주세요.</span>
+          <span class="lang-en">Please describe in detail what kind of work you would like to do in the U.S.</span>
+          <span class="lang-zh">请具体说明您今后希望在美国从事什么样的工作。</span>
+        </span>
+        <span class="q-hint">
+          <span class="lang-ko">어떤 분야/산업에서, 어떤 역할(연구자, 엔지니어, 교수, 기업가 등)로, 어떤 문제를 해결하고 싶은지 적어 주세요.</span>
+          <span class="lang-en">Mention the field/industry, your intended role (researcher, engineer, professor, entrepreneur, etc.), and what problems you want to solve.</span>
+          <span class="lang-zh">请写明您希望所在领域/行业、角色（研究员、工程师、教授、企业家等）以及想要解决的问题。</span>
+        </span>
+        <textarea name="Q7 - Future Work in the US"></textarea>
+      </label>
+
+      <label>
+        <span class="q-number">8)</span>
+        <span class="q-text">
+          <span class="lang-ko">위에서 설명한 미국 내에서의 일(계획)이, 앞에서 말씀하신 업적/경험과 어떻게 연결된다고 보시나요?</span>
+          <span class="lang-en">How are your future plans in the U.S. connected to the achievements and experience you described above?</span>
+          <span class="lang-zh">您认为上述在美国的计划与前面提到的成就和经验有怎样的联系？</span>
+        </span>
+        <span class="q-hint">
+          <span class="lang-ko">본인의 기술·경험·성과가 향후 미국에서 하려는 일과 어떤 점에서 직접적으로 이어지는지 설명해 주세요.</span>
+          <span class="lang-en">Explain how your skills, experience, and achievements directly support or lead into your planned work in the U.S.</span>
+          <span class="lang-zh">请说明您的技能、经验和成果如何直接支撑或延续到您在美国的计划工作中。</span>
+        </span>
+        <textarea name="Q8 - Connection Between Past Achievements and Future Plan"></textarea>
+      </label>
+
+      <label>
+        <span class="q-number">9)</span>
+        <span class="q-text">
+          <span class="lang-ko">향후 미국 내 활동에 대한 구체적인 계획이나 관련 자료가 있나요?</span>
+          <span class="lang-en">Do you already have specific plans or documents related to your future activities in the U.S.?</span>
+          <span class="lang-zh">您是否已经拥有与在美国未来活动相关的具体计划或文件？</span>
+        </span>
+        <span class="q-hint">
+          <span class="lang-ko">예: 학업·연구 계획서, 프로젝트 협업 제안서, 고용 제안서(Offer Letter), 파견 명령서, 사업 계획서, 공동 연구·개발 제안, 이메일 교신 내용 등</span>
+          <span class="lang-en">Examples: study/research plan, collaboration proposal, offer letter, dispatch order, business plan, joint R&amp;D proposal, email correspondence, etc.</span>
+          <span class="lang-zh">例如：学习/研究计划、合作提案、录用意向书、外派命令、商业计划书、联合研发提案、邮件往来等。</span>
+        </span>
+        <textarea name="Q9 - Concrete Plans and Documents in the US"></textarea>
+      </label>
+
+      <div class="checklist-block">
+        <strong>
+          <span class="lang-ko">보유하고 있는 자료에 체크해 주세요</span>
+          <span class="lang-en">Check the types of documents you already have</span>
+          <span class="lang-zh">请选择您目前已经拥有的资料类型</span>
+        </strong>
+        <label><input type="checkbox" name="Q9 - Type of Plan Documents" value="Study or research plan">
+          <span class="lang-ko">학업/연구 계획서</span>
+          <span class="lang-en">Study / research plan</span>
+          <span class="lang-zh">学习/研究计划书</span>
+        </label>
+        <label><input type="checkbox" name="Q9 - Type of Plan Documents" value="Collaboration or project proposal">
+          <span class="lang-ko">프로젝트 협업 제안서</span>
+          <span class="lang-en">Collaboration / project proposal</span>
+          <span class="lang-zh">项目合作提案</span>
+        </label>
+        <label><input type="checkbox" name="Q9 - Type of Plan Documents" value="Offer letter or employment document">
+          <span class="lang-ko">고용 제안서 (Offer Letter 등)</span>
+          <span class="lang-en">Offer letter / employment document</span>
+          <span class="lang-zh">录用意向书/雇佣文件</span>
+        </label>
+        <label><input type="checkbox" name="Q9 - Type of Plan Documents" value="Dispatch order from current employer">
+          <span class="lang-ko">현 직장 또는 기관의 파견 명령서</span>
+          <span class="lang-en">Dispatch order from your current employer or institution</span>
+          <span class="lang-zh">现任单位的外派命令书</span>
+        </label>
+        <label><input type="checkbox" name="Q9 - Type of Plan Documents" value="Business or startup plan">
+          <span class="lang-ko">사업/스타트업 계획서</span>
+          <span class="lang-en">Business / startup plan</span>
+          <span class="lang-zh">商业/创业计划书</span>
+        </label>
+        <label><input type="checkbox" name="Q9 - Type of Plan Documents" value="Email or meeting records">
+          <span class="lang-ko">이메일, 미팅 기록 등 비공식 교신 내용</span>
+          <span class="lang-en">Emails, meeting notes, or other informal communications</span>
+          <span class="lang-zh">电子邮件、会议记录等非正式往来</span>
+        </label>
+        <label><input type="checkbox" name="Q9 - Type of Plan Documents" value="Other">
+          <span class="lang-ko">기타</span>
+          <span class="lang-en">Other</span>
+          <span class="lang-zh">其他</span>:
+          <input type="text" name="Q9 - Type of Plan Documents - Other" style="width:60%; max-width:260px;">
+        </label>
+      </div>
+    </fieldset>
+
+    <!-- 제출 안내 -->
+    <div class="hint-submission">
+      <span class="lang-ko">
+        <strong>제출 방법 안내</strong><br>
+        1) <b>Gmail 또는 기본 메일 프로그램</b>을 사용하시면 아래 <b>Submit via Email</b> 버튼을 누르시면 됩니다.<br>
+        2) <b>네이버/다음/Outlook 등</b>을 사용하시면, <b>Generate Preview Text</b> 버튼을 눌러 전체 내용을 복사한 뒤<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<b>askus@junlawfirm.com</b> 으로 이메일을 보내 주세요.
+      </span>
+      <span class="lang-en">
+        <strong>How to submit</strong><br>
+        1) If you use <b>Gmail or your default email app</b>, click <b>Submit via Email</b> below.<br>
+        2) If you use <b>Naver/Daum/Outlook/etc.</b>, click <b>Generate Preview Text</b>, copy the text, and send it to<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<b>askus@junlawfirm.com</b>.
+      </span>
+      <span class="lang-zh">
+        <strong>提交方式说明</strong><br>
+        1) 如果您使用 <b>Gmail 或默认邮件程序</b>，请点击下面的 <b>Submit via Email</b> 按钮。<br>
+        2) 如果您使用 <b>Naver / Daum / Outlook 等</b>，请点击 <b>Generate Preview Text</b>，复制生成的内容，<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;然后发送到 <b>askus@junlawfirm.com</b>。
+      </span>
+    </div>
+
+    <div class="submit-row">
+      <button type="submit" class="submit-btn">
+        <span class="lang-ko">Submit via Email (mailto)</span>
+        <span class="lang-en">Submit via Email (mailto)</span>
+        <span class="lang-zh">通过邮件提交 (mailto)</span>
+      </button>
+      <button type="button" class="btn btn-ghost" id="generatePreview">
+        <span class="lang-ko">Generate Preview Text</span>
+        <span class="lang-en">Generate Preview Text</span>
+        <span class="lang-zh">生成预览文本</span>
+      </button>
+    </div>
+
+    <div class="preview-box">
+      <textarea id="previewText"
+        placeholder="Preview will appear here. Copy and paste this into your email to askus@junlawfirm.com."></textarea>
+    </div>
+
+  </form>
+</div>
+
+<script>
+  // 언어 토글
+  (function() {
+    const htmlEl = document.documentElement;
+    const buttons = document.querySelectorAll('[data-lang-btn]');
+
+    function setLang(lang) {
+      htmlEl.setAttribute('data-lang', lang);
+      buttons.forEach(btn => {
+        if (btn.getAttribute('data-lang-btn') === lang) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+    }
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const lang = btn.getAttribute('data-lang-btn');
+        setLang(lang);
+      });
+    });
+
+    // 초기값
+    setLang('ko');
+  })();
+
+  // textarea 자동 높이 조절
+  (function() {
+    const autosize = (el) => {
+      el.style.height = 'auto';
+      el.style.height = (el.scrollHeight + 4) + 'px';
+    };
+
+    document.querySelectorAll('textarea').forEach((ta) => {
+      autosize(ta);
+      ta.addEventListener('input', () => autosize(ta));
+    });
+  })();
+
+  // 미리보기 텍스트 생성
+  (function() {
+    const form = document.getElementById('niwStoryForm');
+    const generateBtn = document.getElementById('generatePreview');
+    const previewArea = document.getElementById('previewText');
+
+    if (!form || !generateBtn || !previewArea) return;
+
+    generateBtn.addEventListener('click', function() {
+      const elements = form.elements;
+      const lines = [];
+      lines.push('NIW Story Questionnaire – Checklist + Narrative');
+      lines.push('Generated from online form');
+      lines.push('-------------------------------------------');
+
+      for (let i = 0; i < elements.length; i++) {
+        const el = elements[i];
+        if (!el.name || el.type === 'button' || el.type === 'submit' || el.type === 'hidden') continue;
+
+        let value = '';
+        if (el.type === 'radio') {
+          if (!el.checked) continue;
+          value = el.value;
+        } else if (el.type === 'checkbox') {
+          if (!el.checked) continue;
+          value = el.value;
+        } else {
+          value = el.value;
+        }
+
+        if (value && value.trim() !== '') {
+          lines.push(el.name + ': ' + value);
+        }
+      }
+
+      previewArea.value = lines.join('\\n');
+      previewArea.focus();
+      previewArea.select();
+    });
+  })();
+</script>
+
+</body>
+</html>
